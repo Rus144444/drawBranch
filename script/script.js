@@ -1,83 +1,189 @@
 'use strict';
+
 window.addEventListener('load', () => {
     const canvas = document.getElementById('myCanvas-1');
     const ctx = canvas.getContext('2d');
 
+    // Фон
     ctx.fillStyle = '#e9dedef1';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // прическа 
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "brown";
-    ctx.arc(canvas.width / 2, canvas.height / 2, 125, 1.1 * Math.PI, 1.9  * Math.PI, false);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "brown";
-    ctx.arc(canvas.width / 2, canvas.height / 2, 130, 1.2 * Math.PI, 1.8  * Math.PI, false);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "brown";
-    ctx.arc(canvas.width / 2, canvas.height / 2, 135, 1.3 * Math.PI, 1.7  * Math.PI, false);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "brown";
-    ctx.arc(canvas.width / 2, canvas.height / 2, 140, 1.4 * Math.PI, 1.6  * Math.PI, false);
-    ctx.stroke();
+    // 10 лиц
+    for (let i = 0; i < 2; i++) {
 
-    // ухо левое
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "brown";
-    ctx.arc(canvas.width / 2 - 120, canvas.height / 2, 20, 0.5 * Math.PI, 1.5  * Math.PI, false);
-    ctx.stroke();
+        let centerX;
+        let centerY;
 
-    // ухо правое
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "brown";
-    ctx.arc(canvas.width / 2 + 120, canvas.height / 2, 20, 1.5 * Math.PI, 2.5  * Math.PI, false);
-    ctx.stroke();
+        // 5 лиц в первом ряду
+        if (i < 5) {
+            centerX = 80 + i * 160;
+            centerY = 100;
+        }
 
-    // круг, морда 
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "brown";
-    ctx.arc(canvas.width / 2, canvas.height / 2, 120, 0.1 * Math.PI, 2.9  * Math.PI, false);
-    ctx.stroke();
+        // 5 лиц во втором ряду
+        else {
+            centerX = 80 + (i - 5) * 160;
+            centerY = 300;
+        }
 
-    // нос
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "brown";
-    ctx.arc(canvas.width / 2, canvas.height / 2 + 20, 10, 0.1 * Math.PI, 2.9  * Math.PI, false);
-    ctx.stroke();
-
-    // глаза 
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "blue";
-    ctx.arc(canvas.width / 2 - 50, canvas.height / 2 - 50, 10, 0.1 * Math.PI, 2.9  * Math.PI, false);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "blue";
-    ctx.arc(canvas.width / 2 + 50, canvas.height / 2 - 50, 10, 0.1 * Math.PI, 2.9  * Math.PI, false);
-    ctx.stroke();
-
-
-    // улыбка
-    ctx.beginPath();
-    ctx.lineWidth = "10";
-    ctx.strokeStyle = "red";
-    ctx.lineCap = "round";
-    ctx.arc(canvas.width / 2, canvas.height / 2, 95, 0.1 * Math.PI, 0.9  * Math.PI, false);
-    ctx.stroke();
+        faceFunction(ctx, centerX, centerY);
+    }
 });
 
+
+function faceFunction(ctx, centerX, centerY) {
+
+    // =====================
+    // ПРИЧЕСКА
+    // =====================
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'brown';
+    ctx.arc(centerX, centerY, 25, 1.1 * Math.PI, 1.9 * Math.PI);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'brown';
+    ctx.arc(centerX, centerY, 30, 1.2 * Math.PI, 1.8 * Math.PI);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'brown';
+    ctx.arc(centerX, centerY, 35, 1.3 * Math.PI, 1.7 * Math.PI);
+    ctx.stroke();
+
+    // =====================
+    // ЛЕВОЕ УХО
+    // =====================
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'brown';
+    ctx.arc(
+        centerX - 25,
+        centerY,
+        5,
+        0.5 * Math.PI,
+        1.5 * Math.PI
+    );
+    ctx.stroke();
+
+
+    // =====================
+    // ПРАВОЕ УХО
+    // =====================
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'brown';
+    ctx.arc(
+        centerX + 25,
+        centerY,
+        5,
+        1.5 * Math.PI,
+        2.5 * Math.PI
+    );
+    ctx.stroke();
+
+
+    // =====================
+    // ЛИЦО
+    // =====================
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'brown';
+
+    ctx.arc(
+        centerX,
+        centerY,
+        25,
+        0.1 * Math.PI,
+        2.9 * Math.PI
+    );
+
+    ctx.stroke();
+
+
+    // =====================
+    // НОС
+    // =====================
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'brown';
+
+    ctx.arc(
+        centerX,
+        centerY,
+        1,
+        0.1 * Math.PI,
+        2.9 * Math.PI
+    );
+
+    ctx.stroke();
+
+
+    // =====================
+    // ЛЕВЫЙ ГЛАЗ
+    // =====================
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'blue';
+
+    ctx.arc(
+        centerX - 10,
+        centerY - 10,
+        1,
+        0.1 * Math.PI,
+        2.9 * Math.PI
+    );
+
+    ctx.stroke();
+
+
+    // =====================
+    // ПРАВЫЙ ГЛАЗ
+    // =====================
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'blue';
+
+    ctx.arc(
+        centerX + 10,
+        centerY - 10,
+        1,
+        0.1 * Math.PI,
+        2.9 * Math.PI
+    );
+
+    ctx.stroke();
+
+
+    // =====================
+    // УЛЫБКА
+    // =====================
+
+    ctx.beginPath();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'red';
+    ctx.lineCap = 'round';
+
+    ctx.arc(
+        centerX,
+        centerY,
+        9,
+        0.1 * Math.PI,
+        0.9 * Math.PI
+    );
+
+    ctx.stroke();
+}
 window.addEventListener('load', () => {
     const canvas = document.getElementById('myCanvas-2');
     const ctx = canvas.getContext('2d');
@@ -119,13 +225,14 @@ window.addEventListener('load', () => {
 window.addEventListener('load', () => {
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
-
-    console.log('Canvas initialized:', canvas);
-    console.log('2D Context initialized:', ctx);
     drawBranch(ctx, canvas.width / 2, canvas.height, 50, 0);
+    ctx.fillStyle = '#938bc34b';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }); 
 
 function drawBranch(ctx, startX, startY, trunkWidth, level) {
+
+    
     if (level < 12) {
         const changeX = 100 / (level + 1);
         const changeY = 200 / (level + 1);
@@ -135,20 +242,24 @@ function drawBranch(ctx, startX, startY, trunkWidth, level) {
 
         const topLeftX = startX - Math.random() * changeX;
         const topLeftY = startY - Math.random() * changeY;
-
+        
         ctx.beginPath();
         ctx.moveTo(startX - trunkWidth / 4, startY);
         ctx.quadraticCurveTo(startX - trunkWidth / 4, startY - trunkWidth, topRightX, topRightY);
         ctx.lineWidth = trunkWidth;
         ctx.lineCap = 'round';
+         ctx.strokeStyle = "#37cb24d1";
         ctx.stroke();
 
         ctx.beginPath();
         ctx.moveTo(startX - trunkWidth / 4, startY);
         ctx.quadraticCurveTo(startX - trunkWidth / 4, startY - trunkWidth, topLeftX, topLeftY);
         ctx.lineWidth = trunkWidth;
+        ctx.strokeStyle = "#35752cd9";
         ctx.lineCap = 'round';
+        
         ctx.stroke();
+
         drawBranch(ctx, topRightX, topRightY, trunkWidth * 0.7, level + 1);
         drawBranch(ctx, topLeftX, topLeftY, trunkWidth * 0.7, level + 1);
     }
