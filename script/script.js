@@ -9,20 +9,20 @@ window.addEventListener('load', () => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // 10 лиц
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 10; i++) {
 
         let centerX;
         let centerY;
 
         // 5 лиц в первом ряду
         if (i < 5) {
-            centerX = 80 + i * 160;
+            centerX = 80 + i * 80;
             centerY = 100;
         }
 
         // 5 лиц во втором ряду
         else {
-            centerX = 80 + (i - 5) * 160;
+            centerX = 80 + (i - 5) * 80;
             centerY = 300;
         }
 
