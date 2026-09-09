@@ -1,6 +1,46 @@
 'use strict';
 
 window.addEventListener('load', () => {
+    const canvas = document.getElementById('myCanvas-2');
+    const ctx = canvas.getContext('2d');
+
+    ctx.beginPath()
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+
+    ctx.moveTo(0, canvas.height);
+    ctx.lineTo(canvas.width, 0);
+    ctx.stroke();
+
+    ctx.beginPath()
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 2;
+
+    ctx.moveTo(canvas.width, canvas.height);
+    ctx.lineTo(0, 0);
+    ctx.stroke();
+
+    ctx.beginPath()
+    ctx.strokeStyle = 'blue';
+    ctx.lineWidth = 2;
+
+    ctx.moveTo(canvas.width / 2, canvas.height);
+    ctx.lineTo(canvas.width / 2, 0 );
+    ctx.stroke();
+
+    ctx.beginPath()
+    ctx.strokeStyle = 'yellow';
+    ctx.lineWidth = 2;
+
+    ctx.moveTo(canvas.width, canvas.height / 2);
+    ctx.lineTo(0, canvas.height / 2 );
+    ctx.stroke();
+
+
+}); 
+
+
+window.addEventListener('load', () => {
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
 
